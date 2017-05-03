@@ -132,6 +132,13 @@ PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { /*
 #define LANG_2 0x91
 #define LANG_1 0x90
 
+class DigiKeyboardDevice : public Print {
+ public:
+  DigiKeyboardDevice () {
+    cli();
+    usbDeviceDisconnect();
+    _delay_ms(250);
+    usbDeviceConnect();
 
     usbInit();
       
